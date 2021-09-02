@@ -1,0 +1,30 @@
+{
+  "name": "pern",
+  "version": "1.0.0",
+  "description": "Online shop with PERN stask",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VasiliiOleinik/pern.git"
+  },
+  "author": "Vasyl Oliinyk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VasiliiOleinik/pern/issues"
+  },
+  "homepage": "https://github.com/VasiliiOleinik/pern#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "pg": "^8.7.1",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.6.5"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}
