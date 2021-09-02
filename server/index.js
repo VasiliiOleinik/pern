@@ -1,5 +1,6 @@
 require('dotenv').config(); // dotenv - нужен для того, чтобы можно было получать данные из .env
 const express = require('express');
+const models = require('./models/models');
 const sequelize = require('./db'); // настройки и подключение к БД
 
 const PORT = process.env.PORT || 5000;
