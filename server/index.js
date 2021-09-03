@@ -3,12 +3,18 @@ const express = require('express');
 const sequelize = require('./db'); // настройки и подключение к БД
 const models = require('./models/models'); // Модели БД
 const cors = require('cors');
+const router = require('./routes/index');
+const errorHandler = require('./middleware/ErrorHandlingMiddleware');
 
 const PORT = process.env.PORT || 5000;
 
 const app = express();
 app.use(cors());
 app.use(express.json()); // функция, для того, чтобы можно было парсить json
+app.use('/api', router);
+
+// Обработка ошибок, самый последний middleWare
+app.use(errorHandler);
 
 const start = async () => {
     try {
