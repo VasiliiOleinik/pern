@@ -4,13 +4,17 @@ const sequelize = require('./db'); // настройки и подключени
 const models = require('./models/models'); // Модели БД
 const cors = require('cors');
 const router = require('./routes/index');
+const fileUploader = require('express-fileupload'); // Служит для того, чтобы можно было передавать файлы
 const errorHandler = require('./middleware/ErrorHandlingMiddleware');
+const path = require('path');
 
 const PORT = process.env.PORT || 5000;
 
 const app = express();
 app.use(cors());
 app.use(express.json()); // функция, для того, чтобы можно было парсить json
+app.use(express.static(path.resolve(__dirname, 'static'))); // Указываем серверу, что файлы из папки static нужно раздавать как статику
+app.use(fileUploader({}));
 app.use('/api', router);
 
 // Обработка ошибок, самый последний middleWare
