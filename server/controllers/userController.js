@@ -1,11 +1,11 @@
 const ApiError = require('../error/ApiError');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
-const { User, Backet} = require('../models/models');
+const { User, Backet } = require('../models/models');
 
 const generateJwt = (id, email, role) => {
     return jwt.sign(
-        { id, email,role }, 
+        { id, email, role },
         process.env.SECRET_KEY,
         { expiresIn: '24h' }
     );
@@ -43,11 +43,14 @@ class UserController {
 
     async check(req, res, next) {
         // const query = req.query; // Получить параметры get строки
-        const { id } = req.query; // Получить только id из get строки
-        if(!id) {
-            return next(ApiError.badRequest('Не задан ID'));
-        }
-        res.json(id);
+        // const { id } = req.query; // Получить только id из get строки
+        // if(!id) {
+        //     return next(ApiError.badRequest('Не задан ID'));
+        // }
+        // res.json(id);\
+
+        const token = generateJwt(req.user.id, req.user.email, req.user.role);
+        return res.json({ token });
     }
 }
 
