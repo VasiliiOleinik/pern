@@ -1,5 +1,6 @@
 import React, { createContext } from 'react';
 import ReactDOM from 'react-dom';
+import './i18n';
 import App from './App';
 import DeviceStore from './store/DeviceStore';
 import UserStore from './store/UserStore';
