@@ -7,5 +7,8 @@
   "LoginNow": "Войти !",
   "RegisterMe": "Зарегистироваться",
   "Email": "E-mail",
-  "Password": "Пароль"
+  "Password": "Пароль",
+  "AdminPanel": "Админ панель",
+  "Logout": "Выйти",
+  "Auth": "Авторизация"
 }

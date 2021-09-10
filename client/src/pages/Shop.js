@@ -2,6 +2,7 @@ import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import TypeBar from '../components/TypeBar';
 import { useTranslation } from "react-i18next";
+import BrandBar from '../components/BrandBar';
 
 const Shop = () => {
     const { t } = useTranslation();
@@ -12,6 +13,7 @@ const Shop = () => {
                     <TypeBar />
                 </Col>
                 <Col md={9}>
+                    <BrandBar />
                 </Col>
             </Row>
         </Container>

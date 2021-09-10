@@ -7,5 +7,8 @@
   "LoginNow": "Login now !",
   "RegisterMe": "Register me",
   "Email": "Email",
-  "Password": "Password"
+  "Password": "Password",
+  "AdminPanel": "Admin panel",
+  "Logout": "Logout",
+  "Auth": "Authorization"
 }

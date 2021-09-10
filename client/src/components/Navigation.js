@@ -10,7 +10,7 @@ import { useTranslation } from "react-i18next";
 const Navigation = observer(() => {
     const { user } = useContext(Context);
 
-    const { i18n } = useTranslation();
+    const { i18n, t } = useTranslation();
 
     const changeLanguage = (language) => {
         i18n.changeLanguage(language);
@@ -27,11 +27,11 @@ const Navigation = observer(() => {
                 <NavLink to={SHOP_ROUTE} className='text-white'>GoodSHOP</NavLink>
                 {user.isAuth
                     ? <Nav className="ml-auto text-white">
-                        <Button variant="outline-light">Админ панель</Button>
-                        <Button variant="outline-light" className="ml-4">Выйти</Button>
+                        <Button variant="outline-light"> {t("AdminPanel")}</Button>
+                        <Button variant="outline-light" className="ml-4"> {t("Logout")}</Button>
                     </Nav>
                     : <Nav className="ml-auto text-white">
-                        <Button variant="outline-light" onClick={() => user.setIsAuth(true)}>Авторизация</Button>
+                        <Button variant="outline-light" onClick={() => user.setIsAuth(true)}> {t("Auth")}</Button>
                     </Nav>
                 }
                 <ButtonGroup className="ml-4" size="sm">
