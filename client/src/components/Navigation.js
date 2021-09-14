@@ -25,6 +25,8 @@ const Navigation = observer(() => {
         user.setIsAuth(false);
     }
 
+    console.log(user.isAuth);
+
     return (
         <Navbar bg="dark" variant="dark">
             <Container>

@@ -1,21 +1,20 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { Card, Col, Container, Image, Row, Button, Table } from 'react-bootstrap';
+import { fetchOneDevices } from '../http/deviceApi';
 
 const DevicePage = () => {
-    const device = { id: 1, name: "Iphone 12", price: 25000, rating: 5, img: '123' };
-    const description = [
-        { id: 1, title: 'Оперативная память', description: '5 gb' },
-        { id: 2, title: 'Камера', description: '5 gb' },
-        { id: 3, title: 'Прооцессор', description: '5 gb' },
-        { id: 4, title: 'Кол-во ядер', description: '5 gb' },
-        { id: 5, title: 'Аккумулятор', description: '5 gb' },
-    ];
+   const [device, setDevice] = useState({info: []});
+    const {id} = useParams();
+   useEffect(() => {
+    fetchOneDevices(id).then(data => setDevice(data));
+   }, []);  
 
     return (
         <Container className="mt-4">
             <Row>
                 <Col md={4}>
-                    <Image width={300} height={300} src={device.img} />
+                    <Image width={300} height={300} src={process.env.REACT_APP_API_KEY + device.img} />
                 </Col>
                 <Col md={4}>
                     <Row className="d-flex flex-column align-items-center">
@@ -45,7 +44,7 @@ const DevicePage = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    {description.map(info =>
+                    {device.info.map(info =>
                         <tr key={info.id}>
                             <td>{info.id}</td>
                             <td>{info.title}</td>

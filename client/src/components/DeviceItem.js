@@ -8,7 +8,7 @@ const DeviceItem = ({ device }) => {
     return (
         <Col md={3}>
             <Card style={{ cursor: 'pointer' }} className="mt-3" onClick={() => history.push(`${DEVICE_ROUTE}/${device.id}`)}>
-                <Image width="100%" height={150} src={device.img} />
+                <Image width="100%" height={150} src={process.env.REACT_APP_API_KEY + device.img} fluid />
                 <div className="p-2">
                     <div className="text-black-50 d-flex justify-content-between align-items-center mt-1">
                         <div>Samsung...</div>
