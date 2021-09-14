@@ -20,6 +20,11 @@ const Navigation = observer(() => {
         changeLanguage(lang);
     }
 
+    const logOut = () => {
+        user.setUser({});
+        user.setIsAuth(false);
+    }
+
     return (
         <Navbar bg="dark" variant="dark">
             <Container>
@@ -34,14 +39,14 @@ const Navigation = observer(() => {
                         </Button>
                         <Button
                             variant="outline-light"
-                            onClick={() => history.push(LOGIN_ROUTE)}
+                            onClick={() => logOut()}
                             className="ml-4"
                         >
                             {t("Logout")}
                         </Button>
                     </Nav>
                     : <Nav className="ml-auto text-white">
-                        <Button variant="outline-light" onClick={() => user.setIsAuth(true)}> {t("Auth")}</Button>
+                        <Button variant="outline-light" onClick={() => history.push(LOGIN_ROUTE)}> {t("Auth")}</Button>
                     </Nav>
                 }
                 <ButtonGroup className="ml-4" size="sm">
