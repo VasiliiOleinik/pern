@@ -1,8 +1,8 @@
 import React, { useContext } from 'react';
-import { Navbar, Nav, Button, Container, ButtonGroup } from 'react-bootstrap';
+import { Navbar, Nav, Button, Container, ButtonGroup, Badge } from 'react-bootstrap';
 import { Context } from '../index';
 import { NavLink } from 'react-router-dom';
-import { ADMIN_ROUTE, LOGIN_ROUTE, SHOP_ROUTE } from '../utils/consts';
+import { ADMIN_ROUTE, BASKET_ROUTE, LOGIN_ROUTE, SHOP_ROUTE } from '../utils/consts';
 import { observer } from "mobx-react-lite";
 import { useTranslation } from "react-i18next";
 import { useHistory } from 'react-router-dom';
@@ -25,14 +25,19 @@ const Navigation = observer(() => {
         user.setIsAuth(false);
     }
 
-    console.log(user.isAuth);
-
     return (
         <Navbar bg="dark" variant="dark">
             <Container>
                 <NavLink to={SHOP_ROUTE} className='text-white'>GoodSHOP</NavLink>
                 {user.isAuth
                     ? <Nav className="ml-auto text-white">
+                        <Button
+                            variant="outline-light"
+                            className="mr-4"
+                            onClick={() => history.push(BASKET_ROUTE)}
+                        >
+                            Корзина <Badge variant="danger">0</Badge>
+                        </Button>
                         <Button
                             variant="outline-light"
                             onClick={() => history.push(ADMIN_ROUTE)}

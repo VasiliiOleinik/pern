@@ -4,11 +4,12 @@ import { Card, Col, Container, Image, Row, Button, Table } from 'react-bootstrap
 import { fetchOneDevices } from '../http/deviceApi';
 
 const DevicePage = () => {
-   const [device, setDevice] = useState({info: []});
-    const {id} = useParams();
-   useEffect(() => {
-    fetchOneDevices(id).then(data => setDevice(data));
-   }, []);  
+    const [device, setDevice] = useState({ info: [] });
+    const { id } = useParams();
+    useEffect(() => {
+        fetchOneDevices(id).then(data => setDevice(data));
+        console.log(device);
+    }, [id]);
 
     return (
         <Container className="mt-4">

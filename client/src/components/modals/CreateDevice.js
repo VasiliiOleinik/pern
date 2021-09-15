@@ -33,13 +33,12 @@ const CreateDevice = observer(({ show, onHide }) => {
     }
 
     const addDevice = () => {
-        console.log(device.selectedBrand)
         const formData = new FormData();
         formData.append('name', name);
         formData.append('price', `${price}`);
         formData.append('img', file);
-        formData.append('brandId', device.selectedBrand);
-        formData.append('typeId', device.selectedType);
+        formData.append('brandId', device.selectedBrand ? device.selectedBrand : '1');
+        formData.append('typeId', device.selectedType  ? device.selectedType : '1');
         formData.append('info', JSON.stringify(info));
         createDevice(formData).then(data => onHide());
     }
@@ -96,7 +95,7 @@ const CreateDevice = observer(({ show, onHide }) => {
                         placeholder="Стоимость устройства"
                         className="mt-2"
                         value={price}
-                        onChange={e => setPrice(Number(e.target.value))}
+                        onChange={e => setPrice(e.target.value)}
                     />
                     <Form.Control className="mt-2" type="file" onChange={selectFile} />
                     <hr></hr>

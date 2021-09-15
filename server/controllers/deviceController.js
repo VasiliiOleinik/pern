@@ -1,28 +1,27 @@
 const uuid = require('uuid');
 const path = require('path'); // Функция node.js для получения путей
 const { Device, DeviceInfo } = require('../models/models');
-const { nextTick } = require('process');
 const ApiError = require('../error/ApiError');
 class DeviceController {
     async create(req, res, next) {
         try {
-            const { name, price, brandId, typeId, info } = req.body;
+            let { name, price, brandId, typeId, info } = req.body;
+            console.log(`ireq.bodyreq.bodyreq.bodyreq.bodynfo: ${req}`);
             const { img } = req.files; // ПОлучение файла
             let fileName = uuid.v4() + ".jpg"; // Создание уникального имени
             img.mv(path.resolve(__dirname, '..', 'static', fileName)); // Перемещение файла в папку static
-            const device = await Device.create({ name, price, brandId, typeId, img: fileName });
-            console.log('devicedevicedevicedevicedevice', device)   
+            const deviceData = await Device.create({ name, price, brandId, typeId, img: fileName });
 
             if (info) {
                 info = JSON.parse(info);
                 info.forEach(i =>
                     DeviceInfo.create({
                         title: i.title,
-                        descriprion: i.descriprion,
-                        deviceId: device.id
+                        description: i.description,
+                        deviceId: deviceData.id
                     }));
             }
-            return res.json(device);
+            return res.json(deviceData);
         } catch (e) {
             next(ApiError.badRequest(e.message));
         }
