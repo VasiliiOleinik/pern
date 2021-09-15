@@ -37,8 +37,8 @@ const CreateDevice = observer(({ show, onHide }) => {
         formData.append('name', name);
         formData.append('price', `${price}`);
         formData.append('img', file);
-        formData.append('brandId', device.selectedBrand ? device.selectedBrand : '1');
-        formData.append('typeId', device.selectedType  ? device.selectedType : '1');
+        formData.append('brandId', device.selectedBrand.id ? device.selectedBrand.id : '1');
+        formData.append('typeId', device.selectedType.id  ? device.selectedType.id : '1');
         formData.append('info', JSON.stringify(info));
         createDevice(formData).then(data => onHide());
     }
